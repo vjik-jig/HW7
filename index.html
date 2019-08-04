@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Домашка № 7</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+      var even = arr.filter(function(item) {
+        if (!(item % 2)) {
+          return item;
+        }
+      });
+
+      var odd = arr.filter(function(item) {
+        if (item % 2) {
+          return item;
+        }
+      });
+
+      function isPalindrome(str) {
+        str = str.toLowerCase();
+        var length = str.length;
+        for (var i = 0; i < length / 2; i++) {
+          if (str[i] !== str[length - 1 - i]) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      var deep = [1, 2, 3, [4, 5, [6, 7, [8, [9, 10]]]]];
+
+      var ololo = function flat(aRray) {
+        var result = [];
+        for (i = 0; i < aRray.length; i++) {
+          if (Array.isArray(aRray[i])) {
+            result = result.concat(flat(aRray[i]));
+          }
+          if (aRray.hasOwnProperty(i)) {
+            result.push(aRray[i]);
+          }
+        }
+        return result;
+      };
+
+      console.log(odd); // Нечетные
+      console.log(even); // Четные
+
+      console.log(isPalindrome("довод")); // Проверка на палиндром
+
+      var flat = ololo(deep);
+      console.log(flat);
+    </script>
+  </body>
+</html>
